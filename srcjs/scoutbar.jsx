@@ -50,7 +50,7 @@ const processAction = (el, setValue) => {
   return(func)
 }
 
-const cmdkInput = ({ configuration, value, setValue }) => {
+const scoutbarInput = ({ configuration, value, setValue }) => {
 
   let canUpdateConfig = false;
   let configInputId = `${configuration.id}-configuration`;
@@ -111,4 +111,4 @@ const cmdkInput = ({ configuration, value, setValue }) => {
   );
 };
 
-reactShinyInput('.cmdk', 'Rcmdk.cmdk', cmdkInput);
+reactShinyInput('.scoutbar', 'scoutbaR.scoutbar', scoutbarInput);

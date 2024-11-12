@@ -2517,9 +2517,9 @@ module.exports = window.reactR;
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!************************!*\
-  !*** ./srcjs/cmdk.jsx ***!
-  \************************/
+/*!****************************!*\
+  !*** ./srcjs/scoutbar.jsx ***!
+  \****************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactR__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! reactR */ "reactR");
 /* harmony import */ var reactR__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(reactR__WEBPACK_IMPORTED_MODULE_0__);
@@ -2569,7 +2569,7 @@ var _processAction = function processAction(el, setValue) {
   func = (0,scoutbar__WEBPACK_IMPORTED_MODULE_1__.createScoutAction)(children);
   return func;
 };
-var cmdkInput = function cmdkInput(_ref2) {
+var scoutbarInput = function scoutbarInput(_ref2) {
   var configuration = _ref2.configuration,
     value = _ref2.value,
     setValue = _ref2.setValue;
@@ -2626,9 +2626,9 @@ var cmdkInput = function cmdkInput(_ref2) {
     })
   });
 };
-(0,reactR__WEBPACK_IMPORTED_MODULE_0__.reactShinyInput)('.cmdk', 'Rcmdk.cmdk', cmdkInput);
+(0,reactR__WEBPACK_IMPORTED_MODULE_0__.reactShinyInput)('.scoutbar', 'scoutbaR.scoutbar', scoutbarInput);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=cmdk.js.map
+//# sourceMappingURL=scoutbar.js.map

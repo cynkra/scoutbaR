@@ -1,10 +1,10 @@
 var path = require('path');
 
 module.exports = {
-    entry: path.join(__dirname, 'srcjs', 'cmdk.jsx'),
+    entry: path.join(__dirname, 'srcjs', 'scoutbar.jsx'),
     output: {
-        path: path.join(__dirname, 'inst/www/Rcmdk/cmdk'),
-        filename: 'cmdk.js'
+        path: path.join(__dirname, 'inst/www/scoutbar'),
+        filename: 'scoutbar.js'
     },
     module: {
         rules: [

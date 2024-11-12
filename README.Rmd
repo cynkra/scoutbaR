@@ -1,8 +1,46 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# {scoutbaR}
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+The goal of `{scoutbaR}` is to provide an R API to the `scoutbar` React [widget](https://www.scoutbar.co/).
+
+![](./man/figures/scoutbar-dark.png)
+![](./man/figures/scoutbar-light.png)
+
+## Installation
+
+You can install the development version of `{scoutbaR}` from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("cynkra/scoutbaR")
+```
+
+## Example
+
+`{scoutbaR}` is easy to use:
+
+```r
+library(scoutbaR)
 library(shiny)
 library(bslib)
-library(blockr)
-
-my_stack <- new_stack()
 
 ui <- page_fluid(
   title = "Penguins dashboard",
@@ -57,7 +95,7 @@ ui <- page_fluid(
       textOutput("textOutput"),
       textOutput("current_tab")
     ),
-    generate_ui(my_stack, "stack")
+    "Body"
   )
 )
 
@@ -73,8 +111,7 @@ server <- function(input, output, session) {
   output$textOutput <- renderText({
     sprintf("You entered: %s", input$scoutbar)
   })
-
-  generate_server(my_stack, "stack")
 }
 
 shinyApp(ui, server)
+```
