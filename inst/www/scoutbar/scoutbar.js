@@ -2416,6 +2416,65 @@ var print = function print(data, type, isSystemDefault) {
 
 /***/ }),
 
+/***/ "./srcjs/utils.jsx":
+/*!*************************!*\
+  !*** ./srcjs/utils.jsx ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   processAction: () => (/* binding */ _processAction)
+/* harmony export */ });
+/* harmony import */ var scoutbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! scoutbar */ "./node_modules/scoutbar/dist/bundle-es/index.js");
+
+var _processAction = function processAction(el, setValue) {
+  var cl = el["class"];
+  var label = el.label;
+  var children = el.children;
+  var func;
+  switch (cl) {
+    case 'scout_page':
+      func = scoutbar__WEBPACK_IMPORTED_MODULE_0__.createScoutPage;
+      break;
+    case 'scout_section':
+      func = scoutbar__WEBPACK_IMPORTED_MODULE_0__.createScoutSection;
+      break;
+    default:
+  }
+
+  // When we don't have an action, we don't go further
+  if (el["class"] !== "scout_action") {
+    return func({
+      label: el.label,
+      children: el.children.map(function (child) {
+        return _processAction(child, setValue);
+      })
+    });
+  }
+  if (children.icon !== undefined && typeof children.icon === 'string') {
+    children.icon = /*#__PURE__*/React.createElement("i", {
+      "class": "fas fa-".concat(children.icon),
+      role: "presentation",
+      "aria-label": "".concat(children.icon, " icon")
+    });
+  }
+  children.action = function (e, _ref) {
+    var close = _ref.close;
+    // # id isn't passed to the HTML element so
+    // we can't find it in the DOM. This is hacky but
+    // works since aria-labels appears.
+    var val = $(e.currentTarget).attr('aria-label');
+    setValue(val);
+    close(false);
+  };
+  func = (0,scoutbar__WEBPACK_IMPORTED_MODULE_0__.createScoutAction)(children);
+  return func;
+};
+
+
+/***/ }),
+
 /***/ "react":
 /*!*******************************!*\
   !*** external "window.React" ***!
@@ -2524,55 +2583,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactR__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! reactR */ "reactR");
 /* harmony import */ var reactR__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(reactR__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var scoutbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! scoutbar */ "./node_modules/scoutbar/dist/bundle-es/index.js");
+/* harmony import */ var _utils_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils.jsx */ "./srcjs/utils.jsx");
 
 
-var _processAction = function processAction(el, setValue) {
-  var cl = el["class"];
-  var label = el.label;
-  var children = el.children;
-  var func;
-  switch (cl) {
-    case 'scout_page':
-      func = scoutbar__WEBPACK_IMPORTED_MODULE_1__.createScoutPage;
-      break;
-    case 'scout_section':
-      func = scoutbar__WEBPACK_IMPORTED_MODULE_1__.createScoutSection;
-      break;
-    default:
-  }
 
-  // When we don't have an action, we don't go further
-  if (el["class"] !== "scout_action") {
-    return func({
-      label: el.label,
-      children: el.children.map(function (child) {
-        return _processAction(child, setValue);
-      })
-    });
-  }
-  if (children.icon !== undefined && typeof children.icon === 'string') {
-    children.icon = /*#__PURE__*/React.createElement("i", {
-      "class": "fas fa-".concat(children.icon),
-      role: "presentation",
-      "aria-label": "".concat(children.icon, " icon")
-    });
-  }
-  children.action = function (e, _ref) {
-    var close = _ref.close;
-    // # id isn't passed to the HTML element so
-    // we can't find it in the DOM. This is hacky but
-    // works since aria-labels appears.
-    var val = $(e.currentTarget).attr('aria-label');
-    setValue(val);
-    close(false);
-  };
-  func = (0,scoutbar__WEBPACK_IMPORTED_MODULE_1__.createScoutAction)(children);
-  return func;
-};
-var scoutbarInput = function scoutbarInput(_ref2) {
-  var configuration = _ref2.configuration,
-    value = _ref2.value,
-    setValue = _ref2.setValue;
+var scoutbarInput = function scoutbarInput(_ref) {
+  var configuration = _ref.configuration,
+    value = _ref.value,
+    setValue = _ref.setValue;
   var canUpdateConfig = false;
   var configInputId = "".concat(configuration.id, "-configuration");
 
@@ -2622,7 +2640,7 @@ var scoutbarInput = function scoutbarInput(_ref2) {
     disableSnackbar: cachedConfig.disableSnackbar || false,
     placeholder: cachedConfig.placeholder,
     actions: cachedConfig.actions.map(function (action) {
-      return _processAction(action, setValue);
+      return (0,_utils_jsx__WEBPACK_IMPORTED_MODULE_2__.processAction)(action, setValue);
     })
   });
 };

@@ -2,7 +2,7 @@ library(scoutbaR)
 library(shiny)
 library(bslib)
 
-ui <- page_fill(
+ui <- page_fillable(
   title = "Penguins dashboard",
   layout_sidebar(
     sidebar = sidebar(
