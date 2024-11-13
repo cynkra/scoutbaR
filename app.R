@@ -1,10 +1,8 @@
+library(scoutbaR)
 library(shiny)
 library(bslib)
-library(blockr)
 
-my_stack <- new_stack()
-
-ui <- page_fluid(
+ui <- page_fill(
   title = "Penguins dashboard",
   layout_sidebar(
     sidebar = sidebar(
@@ -57,7 +55,7 @@ ui <- page_fluid(
       textOutput("textOutput"),
       textOutput("current_tab")
     ),
-    generate_ui(my_stack, "stack")
+    "Body"
   )
 )
 
@@ -73,8 +71,6 @@ server <- function(input, output, session) {
   output$textOutput <- renderText({
     sprintf("You entered: %s", input$scoutbar)
   })
-
-  generate_server(my_stack, "stack")
 }
 
 shinyApp(ui, server)

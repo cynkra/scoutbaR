@@ -34,7 +34,7 @@ library(scoutbaR)
 library(shiny)
 library(bslib)
 
-ui <- page_fluid(
+ui <- page_fill(
   title = "Penguins dashboard",
   layout_sidebar(
     sidebar = sidebar(

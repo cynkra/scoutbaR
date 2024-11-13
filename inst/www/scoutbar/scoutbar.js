@@ -2612,7 +2612,7 @@ var scoutbarInput = function scoutbarInput(_ref2) {
     tutorial: cachedConfig.tutorial || true,
     revealScoutbar: configuration.revealScoutbar,
     theme: cachedConfig.theme,
-    acknowledgement: cachedConfig.acknowledgement || true,
+    acknowledgement: cachedConfig.acknowledgement || false,
     bodyScroll: cachedConfig.bodyScroll || true,
     disableFocusTrap: cachedConfig.disableFocusTrap || false,
     barWidth: cachedConfig.barWidth || '650px',
