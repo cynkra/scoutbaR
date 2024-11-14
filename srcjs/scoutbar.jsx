@@ -24,6 +24,9 @@ const scoutbarInput = ({ configuration, value, setValue }) => {
   if (configuration.actions === undefined) {
     configuration.actions = Shiny.shinyapp.$inputValues[configInputId].actions;
   }
+  if (!Array.isArray(configuration.actions)) {
+    configuration.actions = [configuration.actions]
+  }
 
   // Update cache key by key when necessary
   Object.keys(configuration).forEach(function(key, index) {

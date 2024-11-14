@@ -4,10 +4,12 @@
 \alias{scout_page}
 \title{Creates a scout page}
 \usage{
-scout_page(..., label)
+scout_page(..., .list = NULL, label)
 }
 \arguments{
 \item{...}{Expect \link{scout_action}.}
+
+\item{.list}{To pass a list of \link{scout_action}.}
 
 \item{label}{Page label.}
 }

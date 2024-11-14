@@ -4,10 +4,12 @@
 \alias{scout_section}
 \title{Creates a scout section}
 \usage{
-scout_section(..., label)
+scout_section(..., .list = NULL, label)
 }
 \arguments{
 \item{...}{Expect \link{scout_action}.}
+
+\item{.list}{To pass a list of \link{scout_action}.}
 
 \item{label}{Section label.}
 }

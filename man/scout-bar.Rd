@@ -9,7 +9,7 @@ scoutbar(
   inputId,
   theme = c("light", "dark", "auto"),
   placeholder = list("Hello", "Type some text"),
-  actions,
+  actions = list(),
   ...
 )
 

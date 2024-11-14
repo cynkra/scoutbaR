@@ -7,3 +7,5 @@
 ^webpack\.config\.js$
 ^yarn\.lock$
 ^README\.Rmd$
+^LICENSE\.md$
+^package-lock\.json$

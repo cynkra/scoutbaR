@@ -21,14 +21,9 @@ scoutbar <- function(
   inputId,
   theme = c("light", "dark", "auto"),
   placeholder = list("Hello", "Type some text"),
-  actions,
+  actions = list(),
   ...
 ) {
-
-  if (length(actions) == 1) {
-    actions <- list(actions)
-  }
-
   theme <- match.arg(theme)
   reactR::createReactShinyInput(
     inputId,
@@ -52,11 +47,12 @@ scoutbar <- function(
 #' view of the Scoutbar.
 #'
 #' @param ... Expect \link{scout_action}.
+#' @param .list To pass a list of \link{scout_action}.
 #' @param label Page label.
 #' @export
-scout_page <- function(..., label) {
+scout_page <- function(..., .list = NULL, label) {
   list(
-    children = list(...),
+    children = c(list(...), .list),
     label = label,
     class = "scout_page"
   )
@@ -66,12 +62,12 @@ scout_page <- function(..., label) {
 #'
 #' Can sort \link{scout_action} on the same view.
 #'
-#' @param ... Expect \link{scout_action}.
+#' @inheritParams scout_page
 #' @param label Section label.
 #' @export
-scout_section <- function(..., label) {
+scout_section <- function(..., .list = NULL, label) {
   list(
-    children = list(...),
+    children = c(list(...), .list),
     label = label,
     class = "scout_section"
   )
