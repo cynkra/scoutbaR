@@ -7,6 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/cynkra/scoutbaR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cynkra/scoutbaR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of `{scoutbaR}` is to provide an R API to the `scoutbar` React

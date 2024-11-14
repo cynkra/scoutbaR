@@ -9,3 +9,7 @@
 ^README\.Rmd$
 ^LICENSE\.md$
 ^package-lock\.json$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
