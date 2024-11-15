@@ -4,14 +4,14 @@
 \alias{scout_section}
 \title{Creates a scout section}
 \usage{
-scout_section(..., .list = NULL, label)
+scout_section(label, ..., .list = NULL)
 }
 \arguments{
+\item{label}{Section label.}
+
 \item{...}{Expect \link{scout_action}.}
 
 \item{.list}{To pass a list of \link{scout_action}.}
-
-\item{label}{Section label.}
 }
 \description{
 Can sort \link{scout_action} on the same view.

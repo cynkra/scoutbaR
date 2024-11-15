@@ -1,10 +1,11 @@
 Package: scoutbaR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Scoutbar 'React' Widget for 'shiny'
+Version: 0.0.1
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("David", "Granjon", , "david@cynkra.com", role = c("aut", "cre"))
+Description: Creates a contextual menu that can be triggered with keyboard shortcuts or programmatically.
+    Leverages the scoutbar 'React' API at <https://www.scoutbar.co/>. This can replace traditional
+    sidebar or navigation bars, thereby enhancing the user experience with lighter user interfaces.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -13,3 +14,7 @@ Imports:
     htmltools,
     reactR,
     shiny
+Suggests: 
+    testthat (>= 3.0.0),
+    shinytest2
+Config/testthat/edition: 3

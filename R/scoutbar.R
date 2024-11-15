@@ -4,26 +4,25 @@
 #'
 #' @importFrom reactR createReactShinyInput
 #' @importFrom htmltools htmlDependency tags
-#' 
+#'
 #' @param inputId Widget input id.
 #' @param theme Scoutbar theme.
 #' @param placeholder Scoutbar placeholder text. A string or
 #' a list of strings.
-#' @param actions Scoutbar actions. Expect \link{scout_action} or \link{scout_section} and
-#' \link{scout_page}. \link{scout_action} can be nested inside \link{scout_section}
-#' and \link{scout_page}.
+#' @param actions Scoutbar actions. Expect \link{scout_action}
+#' or \link{scout_section} and \link{scout_page}. \link{scout_action} can
+#' be nested inside \link{scout_section} and \link{scout_page}.
 #' @param ... Any other configuration parameter. See
 #' \url{https://www.scoutbar.co/docs/features}.
 #'
 #' @export
 #' @rdname scout-bar
 scoutbar <- function(
-  inputId,
-  theme = c("light", "dark", "auto"),
-  placeholder = list("Hello", "Type some text"),
-  actions = list(),
-  ...
-) {
+    inputId,
+    theme = c("light", "dark", "auto"),
+    placeholder = list("Hello", "Type some text"),
+    actions = list(),
+    ...) {
   theme <- match.arg(theme)
   reactR::createReactShinyInput(
     inputId,
@@ -36,7 +35,13 @@ scoutbar <- function(
       script = "scoutbar.js"
     ),
     default = NULL,
-    list(id = inputId, theme = theme, placeholder = placeholder, actions = actions, ...),
+    list(
+      id = inputId,
+      theme = theme,
+      placeholder = placeholder,
+      actions = actions,
+      ...
+    ),
     htmltools::tags$span
   )
 }
@@ -46,30 +51,31 @@ scoutbar <- function(
 #' Can embed \link{scout_action} on a separate
 #' view of the Scoutbar.
 #'
+#' @param label Page label.
 #' @param ... Expect \link{scout_action}.
 #' @param .list To pass a list of \link{scout_action}.
-#' @param label Page label.
 #' @export
-scout_page <- function(..., .list = NULL, label) {
-  list(
-    children = c(list(...), .list),
-    label = label,
-    class = "scout_page"
-  )
+scout_page <- function(label, ..., .list = NULL) {
+  scout_container("scout_page", .list, label, ...)
 }
 
 #' Creates a scout section
 #'
 #' Can sort \link{scout_action} on the same view.
 #'
-#' @inheritParams scout_page
 #' @param label Section label.
+#' @inheritParams scout_page
 #' @export
-scout_section <- function(..., .list = NULL, label) {
+scout_section <- function(label, ..., .list = NULL) {
+  scout_container("scout_section", .list, label, ...)
+}
+
+#' @keywords internal
+scout_container <- function(cl, .list, label, ...) {
   list(
     children = c(list(...), .list),
     label = label,
-    class = "scout_section"
+    class = cl
   )
 }
 
@@ -101,7 +107,7 @@ scout_action <- function(id, label, description, ...) {
 
 #' Update a Scoutbar widget on the client
 #'
-#' Usee this function from the server side of 
+#' Usee this function from the server side of
 #' your Shiny app.
 #'
 #' @export
@@ -109,7 +115,11 @@ scout_action <- function(id, label, description, ...) {
 #' @param configuration Scoutbar configuration. Expect a list of properties.
 #' See possible values here at \url{https://www.scoutbar.co/docs/features}.
 #' @rdname scout-bar
-update_scoutbar <- function(session = shiny::getDefaultReactiveDomain(), inputId, configuration = NULL) {
+update_scoutbar <- function(
+  session = shiny::getDefaultReactiveDomain(),
+  inputId,
+  configuration = NULL
+) {
   message <- list()
   if (!is.null(configuration)) {
     message$configuration <- c(
@@ -123,7 +133,7 @@ update_scoutbar <- function(session = shiny::getDefaultReactiveDomain(), inputId
   if (isTRUE(message$configuration$revealScoutbar)) {
     msg <- message
     msg$configuration$revealScoutbar <- FALSE
-    session$sendInputMessage(inputId, msg);
+    session$sendInputMessage(inputId, msg)
   }
-  session$sendInputMessage(inputId, message);
+  session$sendInputMessage(inputId, message)
 }

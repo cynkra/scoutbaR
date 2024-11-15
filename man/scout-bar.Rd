@@ -27,9 +27,9 @@ update_scoutbar(
 \item{placeholder}{Scoutbar placeholder text. A string or
 a list of strings.}
 
-\item{actions}{Scoutbar actions. Expect \link{scout_action} or \link{scout_section} and
-\link{scout_page}. \link{scout_action} can be nested inside \link{scout_section}
-and \link{scout_page}.}
+\item{actions}{Scoutbar actions. Expect \link{scout_action}
+or \link{scout_section} and \link{scout_page}. \link{scout_action} can
+be nested inside \link{scout_section} and \link{scout_page}.}
 
 \item{...}{Any other configuration parameter. See
 \url{https://www.scoutbar.co/docs/features}.}

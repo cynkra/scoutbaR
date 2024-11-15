@@ -1,0 +1,137 @@
+{
+  "input": {
+    "scoutbar": "1",
+    "scoutbar-configuration": {
+      "id": "scoutbar",
+      "theme": "dark",
+      "placeholder": [
+        "Hello",
+        "Type some text"
+      ],
+      "actions": [
+        {
+          "children": [
+            {
+              "children": {
+                "ariaLabel": 1,
+                "label": "1",
+                "description": "1",
+                "icon": {
+                  "type": "i",
+                  "key": null,
+                  "ref": null,
+                  "props": {
+                    "class": "fas fa-house",
+                    "role": "presentation",
+                    "aria-label": "house icon"
+                  },
+                  "_owner": null
+                }
+              },
+              "class": "scout_action"
+            },
+            {
+              "children": {
+                "ariaLabel": 2,
+                "label": "2",
+                "description": "2",
+                "icon": {
+                  "type": "i",
+                  "key": null,
+                  "ref": null,
+                  "props": {
+                    "class": "fas fa-gear",
+                    "role": "presentation",
+                    "aria-label": "gear icon"
+                  },
+                  "_owner": null
+                }
+              },
+              "class": "scout_action"
+            }
+          ],
+          "label": "Section 1",
+          "class": "scout_section"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": {
+                    "ariaLabel": 3,
+                    "label": "3",
+                    "description": "3",
+                    "icon": {
+                      "type": "i",
+                      "key": null,
+                      "ref": null,
+                      "props": {
+                        "class": "fas fa-house",
+                        "role": "presentation",
+                        "aria-label": "house icon"
+                      },
+                      "_owner": null
+                    }
+                  },
+                  "class": "scout_action"
+                },
+                {
+                  "children": {
+                    "ariaLabel": 4,
+                    "label": "4",
+                    "description": "4",
+                    "icon": {
+                      "type": "i",
+                      "key": null,
+                      "ref": null,
+                      "props": {
+                        "class": "fas fa-gear",
+                        "role": "presentation",
+                        "aria-label": "gear icon"
+                      },
+                      "_owner": null
+                    }
+                  },
+                  "class": "scout_action"
+                }
+              ],
+              "label": "Page 1",
+              "class": "scout_page"
+            },
+            {
+              "children": {
+                "ariaLabel": 5,
+                "label": "5",
+                "description": "5",
+                "icon": {
+                  "type": "i",
+                  "key": null,
+                  "ref": null,
+                  "props": {
+                    "class": "fas fa-gear",
+                    "role": "presentation",
+                    "aria-label": "gear icon"
+                  },
+                  "_owner": null
+                }
+              },
+              "class": "scout_action"
+            }
+          ],
+          "label": "Section 2",
+          "class": "scout_section"
+        }
+      ],
+      "revealScoutbar": true
+    },
+    "theme": "dark",
+    "update": 1
+  },
+  "output": {
+    "textOutput": "You entered: 1"
+  },
+  "export": {
+
+  }
+}

@@ -1,3 +1,3 @@
-# scoutbaR 0.0.0.9000
+# scoutbaR 0.0.1
 
 * Initial release.

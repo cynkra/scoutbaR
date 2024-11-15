@@ -45,9 +45,9 @@ ui <- page_fillable(
             ),
             scout_action(
               id = 5,
-                icon = "gear",
-                label = "5",
-                description = "5"
+              icon = "gear",
+              label = "5",
+              description = "5"
             )
           )
         )
