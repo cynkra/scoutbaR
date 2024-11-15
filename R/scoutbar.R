@@ -116,10 +116,9 @@ scout_action <- function(id, label, description, ...) {
 #' See possible values here at \url{https://www.scoutbar.co/docs/features}.
 #' @rdname scout-bar
 update_scoutbar <- function(
-  session = shiny::getDefaultReactiveDomain(),
-  inputId,
-  configuration = NULL
-) {
+    session = shiny::getDefaultReactiveDomain(),
+    inputId,
+    configuration = NULL) {
   message <- list()
   if (!is.null(configuration)) {
     message$configuration <- c(
