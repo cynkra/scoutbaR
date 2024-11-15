@@ -42,7 +42,10 @@ export const processAction = (el, setValue) => {
       // works since aria-labels appears.
       let val = $(e.currentTarget).attr('aria-label');
       setValue(val);
-      close(false);
+      // Default is true
+      if (children.closeOnClick) {
+        close(false);
+      }
     }
   
     func = createScoutAction(children);

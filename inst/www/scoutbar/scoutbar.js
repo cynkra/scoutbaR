@@ -2466,7 +2466,10 @@ var _processAction = function processAction(el, setValue) {
     // works since aria-labels appears.
     var val = $(e.currentTarget).attr('aria-label');
     setValue(val);
-    close(false);
+    // Default is true
+    if (children.closeOnClick) {
+      close(false);
+    }
   };
   func = (0,scoutbar__WEBPACK_IMPORTED_MODULE_0__.createScoutAction)(children);
   return func;

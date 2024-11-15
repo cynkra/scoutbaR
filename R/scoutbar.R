@@ -86,9 +86,11 @@ scout_container <- function(cl, .list, label, ...) {
 #' @param id Unique id.
 #' @param label Action label.
 #' @param description Action description.
+#' @param closeOnClick Whether to close the scoutbar whenever this action is
+#' clicked. Default to TRUE.
 #' @param ... Other options. See \url{https://www.scoutbar.co/docs/actions}.
 #' @export
-scout_action <- function(id, label, description, ...) {
+scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
   props <- list(
     # id isn't passed to the HTML element so
     # we can't find it in the DOM. This is hacky but
@@ -96,6 +98,7 @@ scout_action <- function(id, label, description, ...) {
     ariaLabel = id,
     label = label,
     description = description,
+    closeOnClick = closeOnClick,
     ...
   )
 

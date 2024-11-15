@@ -16,6 +16,7 @@
                 "ariaLabel": 1,
                 "label": "1",
                 "description": "1",
+                "closeOnClick": true,
                 "icon": {
                   "type": "i",
                   "key": null,
@@ -35,6 +36,7 @@
                 "ariaLabel": 2,
                 "label": "2",
                 "description": "2",
+                "closeOnClick": true,
                 "icon": {
                   "type": "i",
                   "key": null,
@@ -62,6 +64,7 @@
                     "ariaLabel": 3,
                     "label": "3",
                     "description": "3",
+                    "closeOnClick": true,
                     "icon": {
                       "type": "i",
                       "key": null,
@@ -81,6 +84,7 @@
                     "ariaLabel": 4,
                     "label": "4",
                     "description": "4",
+                    "closeOnClick": true,
                     "icon": {
                       "type": "i",
                       "key": null,
@@ -104,6 +108,7 @@
                 "ariaLabel": 5,
                 "label": "5",
                 "description": "5",
+                "closeOnClick": true,
                 "icon": {
                   "type": "i",
                   "key": null,

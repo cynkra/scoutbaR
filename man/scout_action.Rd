@@ -4,7 +4,7 @@
 \alias{scout_action}
 \title{Creates a scout action}
 \usage{
-scout_action(id, label, description, ...)
+scout_action(id, label, description, closeOnClick = TRUE, ...)
 }
 \arguments{
 \item{id}{Unique id.}
@@ -12,6 +12,9 @@ scout_action(id, label, description, ...)
 \item{label}{Action label.}
 
 \item{description}{Action description.}
+
+\item{closeOnClick}{Whether to close the scoutbar whenever this action is
+clicked. Default to TRUE.}
 
 \item{...}{Other options. See \url{https://www.scoutbar.co/docs/actions}.}
 }
