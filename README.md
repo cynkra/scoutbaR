@@ -8,6 +8,10 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/cynkra/scoutbaR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cynkra/scoutbaR/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/cynkra/scoutbaR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cynkra/scoutbaR?branch=main)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/scoutbaR)](https://CRAN.R-project.org/package=scoutbaR)
 <!-- badges: end -->
 
 The goal of `{scoutbaR}` is to provide an R API to the `scoutbar` React

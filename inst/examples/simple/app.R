@@ -6,7 +6,7 @@ ui <- page_fillable(
   title = "Penguins dashboard",
   layout_sidebar(
     sidebar = sidebar(
-      input_dark_mode(id = "theme"),
+      input_dark_mode(id = "theme", mode = "dark"),
       actionButton("update", "Update", icon = icon("house")),
       scoutbar(
         "scoutbar",
