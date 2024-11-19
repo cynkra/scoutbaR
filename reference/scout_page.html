@@ -57,9 +57,20 @@ view of the Scoutbar.</p>
 
 
 <dt id="arg--list">.list<a class="anchor" aria-label="anchor" href="#arg--list"></a></dt>
-<dd><p>To pass a list of <a href="scout_action.html">scout_action</a>.</p></dd>
+<dd><p>To pass a list of <a href="scout_action.html">scout_action</a>.</p><ul><li><p>children: a sublist where are passed the <a href="scout_action.html">scout_action</a>.</p></li>
+<li><p>label: The page label.</p></li>
+<li><p>class: a character vector to identify the page on the JavaScript side.
+You are not expected to modify it as it will break the JavaScript binding.</p></li>
+</ul></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Whenever many <a href="scout_action.html">scout_action</a> share a similar topic,
+or have nested topics, this function allows you to provide a better
+experience by isolating some actions in a separate view. You can nest
+pages within other pages and combine it with <a href="scout_section.html">scout_section</a>.</p>
+    </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
