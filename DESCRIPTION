@@ -1,8 +1,9 @@
 Package: scoutbaR
-Title: Scoutbar 'React' Widget for 'shiny'
+Title: A Spotlight 'React' Widget for 'shiny' Apps
 Version: 0.0.1
-Authors@R: 
-    person("David", "Granjon", , "dgranjon@ymail.com", role = c("aut", "cre"))
+Authors@R: c(
+  person("David", "Granjon", , "dgranjon@ymail.com", role = c("aut", "cre")),
+  person("Adenekan", "Wonderful", , "adenekanwonderful41@gmail.com", role = c("cph"), comment = "Scoutbar React library: <https://github.com/adenekan41/scoutbar>"))
 Description: Creates a contextual menu that can be triggered with keyboard shortcuts or programmatically.
     This can replace traditional sidebars or navigation bars, thereby enhancing the 
     user experience with lighter user interfaces.

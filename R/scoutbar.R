@@ -2,6 +2,11 @@
 #'
 #' Scoutbar react widget for Shiny.
 #'
+#' Provides a contextual menu users can activate
+#' with keyboard shortcut or prommatically with \link{update_scoutbar}.
+#' Scoutbar may be seen as an alternative to sidebars and navbars, as it allows
+#' to construct better navigation menus.
+#'
 #' @importFrom reactR createReactShinyInput
 #' @importFrom htmltools htmlDependency tags
 #'
@@ -15,8 +20,11 @@
 #' @param ... Any other configuration parameter. See
 #' \url{https://www.scoutbar.co/docs/features}.
 #'
+#' @return A list of shiny tags containing all the web dependencies
+#' and scoutbar elements required to instantiate the Scoutbar React widget from
+#' JavaScript.
 #' @export
-#' @rdname scout-bar
+#' @rdname scoutbar
 scoutbar <- function(
     inputId,
     theme = c("light", "dark", "auto"),
@@ -51,9 +59,20 @@ scoutbar <- function(
 #' Can embed \link{scout_action} on a separate
 #' view of the Scoutbar.
 #'
+#' Whenever many \link{scout_action} share a similar topic,
+#' or have nested topics, this function allows you to provide a better
+#' experience by isolating some actions in a separate view. You can nest
+#' pages within other pages and combine it with \link{scout_section}.
+#'
 #' @param label Page label.
 #' @param ... Expect \link{scout_action}.
 #' @param .list To pass a list of \link{scout_action}.
+#' \itemize{
+#'  \item children: a sublist where are passed the \link{scout_action}.
+#'  \item label: The page label.
+#'  \item class: a character vector to identify the page on the JavaScript side.
+#'  You are not expected to modify it as it will break the JavaScript binding.
+#'  }
 #' @export
 scout_page <- function(label, ..., .list = NULL) {
   scout_container("scout_page", .list, label, ...)
@@ -61,10 +80,21 @@ scout_page <- function(label, ..., .list = NULL) {
 
 #' Creates a scout section
 #'
-#' Can sort \link{scout_action} on the same view.
+#' Sort \link{scout_action} on the same view.
+#'
+#' Whenever many \link{scout_action} share a similar topic,
+#' you may use this function to sort them in the UI and offer
+#' a better user experience. You can combine it with \link{scout_page}.
 #'
 #' @param label Section label.
 #' @inheritParams scout_page
+#' @return A list containing:
+#' \itemize{
+#'  \item children: a sublist where are passed the \link{scout_action}.
+#'  \item label: The section label.
+#'  \item class: a character vector to identify the section on the JavaScript side.
+#'  You are not expected to modify it as it will break the JavaScript binding.
+#'  }
 #' @export
 scout_section <- function(label, ..., .list = NULL) {
   scout_container("scout_section", .list, label, ...)
@@ -81,7 +111,13 @@ scout_container <- function(cl, .list, label, ...) {
 
 #' Creates a scout action
 #'
-#' Can sort \link{scout_action} on the same view.
+#' Creates an item that can perform actions on the server side.
+#'
+#' This function is meant to be embeded directly within
+#' \link{scoutbar} or via a more structured way within \link{scout_page}
+#' or \link{scout_section}. It serves as a bridge between R and JavaScript to
+#' communicate with the Scoutbar React API, so you are not expected to call it on its
+#' own.
 #'
 #' @param id Unique id.
 #' @param label Action label.
@@ -89,6 +125,12 @@ scout_container <- function(cl, .list, label, ...) {
 #' @param closeOnClick Whether to close the scoutbar whenever this action is
 #' clicked. Default to TRUE.
 #' @param ... Other options. See \url{https://www.scoutbar.co/docs/actions}.
+#' @return A list containing:
+#' \itemize{
+#'  \item children: a sublist where are passed the options.
+#'  \item class: a character vector to identify the action on the JavaScript side.
+#'  You are not expected to modify it as it will break the JavaScript binding.
+#'  }
 #' @export
 scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
   props <- list(
@@ -110,19 +152,22 @@ scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
 
 #' Update a Scoutbar widget on the client
 #'
-#' Usee this function from the server side of
-#' your Shiny app.
+#' Use this function from the server side of
+#' your Shiny app to update a \link{scoutbar}.
 #'
 #' @export
 #' @param session Shiny session object.
-#' @param configuration Scoutbar configuration. Expect a list of properties.
-#' See possible values here at \url{https://www.scoutbar.co/docs/features}.
-#' @rdname scout-bar
+#' @param ... Scoutbar configuration. Expect a list of properties
+#' like in \link{scoutbar}. See possible values here at \url{https://www.scoutbar.co/docs/features}.
+#' @return This function is called for its side effect. It sends a message to JavaScript
+#' through the current websocket connection, leveraging the shiny session object.
+#' @rdname scoutbar
 update_scoutbar <- function(
     session = shiny::getDefaultReactiveDomain(),
     inputId,
-    configuration = NULL) {
+    ...) {
   message <- list()
+  configuration <- list(...)
   if (!is.null(configuration)) {
     message$configuration <- c(
       configuration,

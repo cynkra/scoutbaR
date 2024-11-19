@@ -18,6 +18,21 @@ clicked. Default to TRUE.}
 
 \item{...}{Other options. See \url{https://www.scoutbar.co/docs/actions}.}
 }
+\value{
+A list containing:
+\itemize{
+\item children: a sublist where are passed the options.
+\item class: a character vector to identify the action on the JavaScript side.
+You are not expected to modify it as it will break the JavaScript binding.
+}
+}
 \description{
-Can sort \link{scout_action} on the same view.
+Creates an item that can perform actions on the server side.
+}
+\details{
+This function is meant to be embeded directly within
+\link{scoutbar} or via a more structured way within \link{scout_page}
+or \link{scout_section}. It serves as a bridge between R and JavaScript to
+communicate with the Scoutbar React API, so you are not expected to call it on its
+own.
 }

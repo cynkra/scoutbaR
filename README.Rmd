@@ -38,7 +38,7 @@ devtools::install_github("cynkra/scoutbaR")
 
 ## Example
 
-`{scoutbaR}` is easy to use:
+`{scoutbaR}` is easy to use. The app below shows how to leverage `scout_action()`, `scout_section()` and `scout_page()`:
 
 ```r
 library(scoutbaR)
@@ -105,11 +105,11 @@ ui <- page_fillable(
 server <- function(input, output, session) {
 
   observeEvent(input$update, {
-    update_scoutbar(session, "scoutbar", list(revealScoutbar = TRUE))
+    update_scoutbar(session, "scoutbar", revealScoutbar = TRUE)
   })
 
   observeEvent(input$theme, {
-    update_scoutbar(session, "scoutbar", list(theme = input$theme))
+    update_scoutbar(session, "scoutbar", theme = input$theme)
   })
   output$textOutput <- renderText({
     sprintf("You entered: %s", input$scoutbar)

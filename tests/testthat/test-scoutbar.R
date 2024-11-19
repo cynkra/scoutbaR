@@ -64,7 +64,7 @@ test_that("update scoutbar works", {
   update_scoutbar(
     session = session,
     id,
-    configuration = list(revealScoutbar = TRUE)
+    revealScoutbar = TRUE
   )
 
   res <- session$lastInputMessage

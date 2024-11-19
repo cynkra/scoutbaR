@@ -11,8 +11,28 @@ scout_section(label, ..., .list = NULL)
 
 \item{...}{Expect \link{scout_action}.}
 
-\item{.list}{To pass a list of \link{scout_action}.}
+\item{.list}{To pass a list of \link{scout_action}.
+\itemize{
+\item children: a sublist where are passed the \link{scout_action}.
+\item label: The page label.
+\item class: a character vector to identify the page on the JavaScript side.
+You are not expected to modify it as it will break the JavaScript binding.
+}}
+}
+\value{
+A list containing:
+\itemize{
+\item children: a sublist where are passed the \link{scout_action}.
+\item label: The section label.
+\item class: a character vector to identify the section on the JavaScript side.
+You are not expected to modify it as it will break the JavaScript binding.
+}
 }
 \description{
-Can sort \link{scout_action} on the same view.
+Sort \link{scout_action} on the same view.
+}
+\details{
+Whenever many \link{scout_action} share a similar topic,
+you may use this function to sort them in the UI and offer
+a better user experience. You can combine it with \link{scout_page}.
 }

@@ -62,11 +62,11 @@ ui <- page_fillable(
 server <- function(input, output, session) {
 
   observeEvent(input$update, {
-    update_scoutbar(session, "scoutbar", list(revealScoutbar = TRUE))
+    update_scoutbar(session, "scoutbar", revealScoutbar = TRUE)
   })
 
   observeEvent(input$theme, {
-    update_scoutbar(session, "scoutbar", list(theme = input$theme))
+    update_scoutbar(session, "scoutbar", theme = input$theme)
   })
   output$textOutput <- renderText({
     sprintf("You entered: %s", input$scoutbar)
