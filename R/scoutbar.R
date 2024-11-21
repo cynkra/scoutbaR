@@ -66,7 +66,9 @@ scoutbar <- function(
 #'
 #' @param label Page label.
 #' @param ... Expect \link{scout_action}.
-#' @param .list To pass a list of \link{scout_action}.
+#' @param .list To programmatically pass a list of \link{scout_action},
+#' with \code{lapply} for instance.
+#' @return A list containing:
 #' \itemize{
 #'  \item children: a sublist where are passed the \link{scout_action}.
 #'  \item label: The page label.

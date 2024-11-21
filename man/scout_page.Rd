@@ -11,13 +11,17 @@ scout_page(label, ..., .list = NULL)
 
 \item{...}{Expect \link{scout_action}.}
 
-\item{.list}{To pass a list of \link{scout_action}.
+\item{.list}{To programmatically pass a list of \link{scout_action},
+with \code{lapply} for instance.}
+}
+\value{
+A list containing:
 \itemize{
 \item children: a sublist where are passed the \link{scout_action}.
 \item label: The page label.
 \item class: a character vector to identify the page on the JavaScript side.
 You are not expected to modify it as it will break the JavaScript binding.
-}}
+}
 }
 \description{
 Can embed \link{scout_action} on a separate
