@@ -37,6 +37,9 @@ export const processAction = (el, setValue) => {
       </i>
     }
     children.action = (e, { close }) => {
+      // Reset input so that if we select the same choice
+      // observers can trigger.
+      setValue(null);
       // # id isn't passed to the HTML element so
       // we can't find it in the DOM. This is hacky but
       // works since aria-labels appears.

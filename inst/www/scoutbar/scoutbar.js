@@ -2464,6 +2464,7 @@ var _processAction = function processAction(el, setValue) {
     // # id isn't passed to the HTML element so
     // we can't find it in the DOM. This is hacky but
     // works since aria-labels appears.
+    setValue(null);
     var val = $(e.currentTarget).attr('aria-label');
     setValue(val);
     // Default is true
