@@ -127,7 +127,8 @@
           "label": "Section 2",
           "class": "scout_section"
         }
-      ]
+      ],
+      "showRecentSearch": true
     },
     "theme": "dark",
     "update": 0
