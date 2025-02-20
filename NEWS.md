@@ -1,4 +1,4 @@
-# scoutbaR 0.0.2.9000
+# scoutbaR 0.1.0
 
 ## Bug fix
 
