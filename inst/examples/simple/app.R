@@ -10,6 +10,7 @@ ui <- page_fillable(
       actionButton("update", "Update", icon = icon("house")),
       scoutbar(
         "scoutbar",
+        showRecentSearch = TRUE,
         actions = list(
           scout_section(
             label = "Section 1",
@@ -60,7 +61,6 @@ ui <- page_fillable(
 )
 
 server <- function(input, output, session) {
-
   observeEvent(input$update, {
     update_scoutbar(session, "scoutbar", revealScoutbar = TRUE)
   })

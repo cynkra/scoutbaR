@@ -1,0 +1,10 @@
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+/**
+ * scoutbar.js 
+ * @summary ScoutBar is a JavaScript library for developing user friendly, easy-to-use, scalable and highly customizable component for automating your navigation experience
+ * @version v1.2.3
+ * @author  Adenekan Wonderful <hellocodewonders@gmail.com> (https://codewonders.dev)
+ * @license Released under the MIT license.
+ * @copyright Adenekan Wonderful 2021
+ */
