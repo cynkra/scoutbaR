@@ -131,6 +131,7 @@
       "showRecentSearch": true,
       "revealScoutbar": true
     },
+    "scoutbar-open": false,
     "theme": "dark",
     "update": 1
   },

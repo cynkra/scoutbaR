@@ -1,6 +1,6 @@
 import { createScoutAction, createScoutPage, createScoutSection } from 'scoutbar';
 
-export const processAction = (el, setValue) => {
+const processAction = (el, setValue) => {
   let cl = el.class;
   let label = el.label;
   let children = el.children;
@@ -56,3 +56,59 @@ export const processAction = (el, setValue) => {
   func = createScoutAction(children);
   return (func)
 }
+
+const setOpenState = (configuration) => {
+  setInterval(() => {
+    let actual = Shiny.shinyapp.$inputValues[`${configuration.id}-open`];
+    let newVal = $(`#scoutbar___root`).children().length > 0;
+    if (actual != newVal) {
+      Shiny.setInputValue(
+        `${configuration.id}-open`,
+        newVal
+      );
+    }
+  }, 100)
+}
+
+const cacheOrExtractConfig = (configuration) => {
+  let cachedConfig;
+  let configInputId = `${configuration.id}-configuration`;
+  if (Shiny.shinyapp.$inputValues[configInputId] === undefined) {
+    cachedConfig = configuration;
+    Shiny.setInputValue(configInputId, cachedConfig);
+  } else {
+    cachedConfig = Shiny.shinyapp.$inputValues[configInputId];
+  }
+  return (cachedConfig)
+}
+
+const updateConfig = (cachedConfig, configuration) => {
+  let configInputId = `${configuration.id}-configuration`;
+  let canUpdateConfig = false;
+  // When we call update input, then
+  // it is possible we don't pass any action.
+  // In that case we don't want to overwrite the existing state.
+  // The state is kept in a secondary input which is updated
+  // whenever actions change.
+  if (configuration.actions === undefined) {
+    configuration.actions = Shiny.shinyapp.$inputValues[configInputId].actions;
+  }
+  if (!Array.isArray(configuration.actions)) {
+    configuration.actions = [configuration.actions]
+  }
+
+  // Find whether we can update
+  Object.keys(configuration).forEach(function (key, index) {
+    if (configuration[key] !== cachedConfig[key]) {
+      canUpdateConfig = true;
+      cachedConfig[key] = configuration[key];
+    }
+  });
+
+  // Only update if any difference was detected
+  if (canUpdateConfig) {
+    Shiny.setInputValue(configInputId, cachedConfig);
+  }
+}
+
+export { processAction, setOpenState, cacheOrExtractConfig, updateConfig }

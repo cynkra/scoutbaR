@@ -1,3 +1,9 @@
+# scoutbaR 0.2.0
+
+## New feature
+
+- New input[[<SCOUTBAR_ID>-open]]: get the state of the scoutbar open status.
+
 # scoutbaR 0.1.0
 
 ## Bug fix
@@ -7,4 +13,4 @@
 
 # scoutbaR 0.0.1
 
-* Initial release.
+- Initial release.

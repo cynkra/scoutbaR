@@ -61,6 +61,13 @@ ui <- page_fillable(
 )
 
 server <- function(input, output, session) {
+  observeEvent(
+    input[["scoutbar-open"]],
+    {
+      print(input[["scoutbar-open"]])
+    }
+  )
+
   observeEvent(input$update, {
     update_scoutbar(session, "scoutbar", revealScoutbar = TRUE)
   })

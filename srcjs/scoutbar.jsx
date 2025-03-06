@@ -1,46 +1,16 @@
 import { reactShinyInput } from 'reactR';
 import { ScoutBar } from 'scoutbar';
-import { processAction } from './utils.jsx';
+import { processAction, setOpenState, cacheOrExtractConfig, updateConfig } from './utils.jsx';
 import './scoutbar.css'
 
 const scoutbarInput = ({ configuration, value, setValue }) => {
-
-  let canUpdateConfig = false;
-  let configInputId = `${configuration.id}-configuration`;
-
   // Cache or extract cached configuration
-  let cachedConfig;
-  if (Shiny.shinyapp.$inputValues[configInputId] === undefined) {
-    cachedConfig = configuration;
-    Shiny.setInputValue(configInputId, cachedConfig);
-  } else {
-    cachedConfig = Shiny.shinyapp.$inputValues[configInputId];
-  }
-
-  // When we call update input, then
-  // it is possible we don't pass any action.
-  // In that case we don't want to overwrite the existing state.
-  // The state is kept in a secondary input which is updated
-  // whenever actions change.
-  if (configuration.actions === undefined) {
-    configuration.actions = Shiny.shinyapp.$inputValues[configInputId].actions;
-  }
-  if (!Array.isArray(configuration.actions)) {
-    configuration.actions = [configuration.actions]
-  }
-
+  let cachedConfig = cacheOrExtractConfig(configuration);
+  // Scoutbar does not seem to emit any onClose so it does not know
+  // its state
+  setOpenState(configuration);
   // Update cache key by key when necessary
-  Object.keys(configuration).forEach(function (key, index) {
-    if (configuration[key] !== cachedConfig[key]) {
-      canUpdateConfig = true;
-      cachedConfig[key] = configuration[key];
-    }
-  });
-
-  // Only update if any difference was detected
-  if (canUpdateConfig) {
-    Shiny.setInputValue(configInputId, cachedConfig);
-  }
+  updateConfig(cachedConfig, configuration);
 
   return (
     <ScoutBar

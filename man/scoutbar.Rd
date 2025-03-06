@@ -16,7 +16,9 @@ scoutbar(
 update_scoutbar(session = shiny::getDefaultReactiveDomain(), inputId, ...)
 }
 \arguments{
-\item{inputId}{Widget input id.}
+\item{inputId}{Widget input id.
+You can check the scoutbar configuration with \code{input[["<inputId>-configuration"]]}.
+You can query the scoutbar open state with \code{input[["<inputId>-open"]]}.}
 
 \item{theme}{Scoutbar theme.}
 
@@ -48,7 +50,7 @@ your Shiny app to update a \link{scoutbar}.
 }
 \details{
 Provides a contextual menu users can activate
-with keyboard shortcut or prommatically with \link{update_scoutbar}.
+with keyboard shortcut or programmatically with \link{update_scoutbar}.
 Scoutbar may be seen as an alternative to sidebars and navbars, as it allows
 to construct better navigation menus.
 }

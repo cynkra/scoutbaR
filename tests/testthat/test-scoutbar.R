@@ -86,9 +86,11 @@ test_that("App initialization is consistent", {
   app$expect_values()
 
   app$click("update")
+  app$wait_for_idle()
   app$expect_values()
 
   app$click(selector = ".scoutbar-cell-item[aria-label=\"1\"]")
+  app$wait_for_idle()
   app$expect_values()
   app$stop()
 })
