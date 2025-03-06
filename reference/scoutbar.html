@@ -11,7 +11,7 @@ your Shiny app to update a scoutbar."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">scoutbaR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,9 @@ your Shiny app to update a scoutbar.</p>
 
 
 <dl><dt id="arg-inputid">inputId<a class="anchor" aria-label="anchor" href="#arg-inputid"></a></dt>
-<dd><p>Widget input id.</p></dd>
+<dd><p>Widget input id.
+You can check the scoutbar configuration with <code>input[["&lt;inputId&gt;-configuration"]]</code>.
+You can query the scoutbar open state with <code>input[["&lt;inputId&gt;-open"]]</code>.</p></dd>
 
 
 <dt id="arg-theme">theme<a class="anchor" aria-label="anchor" href="#arg-theme"></a></dt>
@@ -98,7 +100,7 @@ through the current websocket connection, leveraging the shiny session object.</
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Provides a contextual menu users can activate
-with keyboard shortcut or prommatically with update_scoutbar.
+with keyboard shortcut or programmatically with update_scoutbar.
 Scoutbar may be seen as an alternative to sidebars and navbars, as it allows
 to construct better navigation menus.</p>
     </div>
