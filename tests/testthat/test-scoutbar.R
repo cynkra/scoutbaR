@@ -77,6 +77,11 @@ test_that("update scoutbar works", {
 
 # shinytest2
 library(shinytest2)
+chromote::local_chrome_version(
+  "latest-stable",
+  binary = "chrome-headless-shell"
+)
+
 test_that("App initialization is consistent", {
   app <- AppDriver$new(
     system.file("examples/simple", package = "scoutbaR"),
