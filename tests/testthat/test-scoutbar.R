@@ -7,6 +7,19 @@ test_that("scout action works", {
 
   expect_type(action$children, "list")
   expect_identical(action$children$ariaLabel, "id")
+
+  # Pass icons as shiny tags
+  expect_snapshot(
+    error = TRUE,
+    {
+      scout_action(
+        id = 3,
+        icon = "house",
+        label = "3",
+        description = "3"
+      )
+    }
+  )
 })
 
 test_that("scout section works", {

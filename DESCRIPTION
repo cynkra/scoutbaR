@@ -1,6 +1,6 @@
 Package: scoutbaR
 Title: A Spotlight 'React' Widget for 'shiny' Apps
-Version: 0.2.0
+Version: 0.2.5
 Authors@R: c(
   person("David", "Granjon", , "dgranjon@ymail.com", role = c("aut", "cre")),
   person("Adenekan", "Wonderful", , "adenekanwonderful41@gmail.com", role = c("cph"), comment = "Scoutbar React library: <https://github.com/adenekan41/scoutbar>"))

@@ -16,13 +16,13 @@ ui <- page_fillable(
             label = "Section 1",
             scout_action(
               id = 1,
-              icon = "house",
+              icon = icon("house"),
               label = "1",
               description = "1"
             ),
             scout_action(
               id = 2,
-              icon = "gear",
+              icon = icon("gear"),
               label = "2",
               description = "2"
             )
@@ -33,20 +33,20 @@ ui <- page_fillable(
               label = "Page 1",
               scout_action(
                 id = 3,
-                icon = "house",
+                icon = icon("house"),
                 label = "3",
                 description = "3"
               ),
               scout_action(
                 id = 4,
-                icon = "gear",
+                icon = icon("gear"),
                 label = "4",
                 description = "4"
               )
             ),
             scout_action(
               id = 5,
-              icon = "gear",
+              icon = icon("gear"),
               label = "5",
               description = "5"
             )

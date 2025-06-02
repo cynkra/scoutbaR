@@ -1,5 +1,24 @@
 import { createScoutAction, createScoutPage, createScoutSection } from 'scoutbar';
 
+const convertTagToElement = (tag) => {
+  if (tag) {
+    if (React.isValidElement(tag)) return tag;
+    // looks like class attribute fine without changing to className
+    // also if we expect style prop then we would need to convert to object
+    // or ask users to specify style as list in R unless also handled somewhere
+    if (tag.children !== undefined) {
+      tag.children = convertTagToElement(tag.children)
+    }
+    return React.createElement(
+      tag.name,
+      tag.attribs,
+      tag.children
+    );
+  } else {
+    return null;
+  }
+}
+
 const processAction = (el, setValue) => {
   let cl = el.class;
   let label = el.label;
@@ -27,14 +46,13 @@ const processAction = (el, setValue) => {
       })
     )
   }
-
-  if (children.icon !== undefined && typeof children.icon === 'string') {
-    children.icon = <i
-      class={`fas fa-${children.icon}`}
-      role="presentation"
-      aria-label={`${children.icon} icon`}
-    >
-    </i>
+  // Convert icons to React elements
+  if (children.icon !== undefined) {
+    //Shiny.renderDependencies(children.icon.dependencies);
+    //children.icon = $($("<div/>").html(children.icon.html).text());
+    if (!React.isValidElement(children.icon)) {
+      children.icon = reactR.hydrate({}, children.icon);
+    }
   }
   children.action = (e, { close, clearSearch }) => {
     // Reset input so that if we select the same choice

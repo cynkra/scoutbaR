@@ -28,11 +28,12 @@
 #' @export
 #' @rdname scoutbar
 scoutbar <- function(
-    inputId,
-    theme = c("light", "dark", "auto"),
-    placeholder = list("Hello", "Type some text"),
-    actions = list(),
-    ...) {
+  inputId,
+  theme = c("light", "dark", "auto"),
+  placeholder = list("Hello", "Type some text"),
+  actions = list(),
+  ...
+) {
   theme <- match.arg(theme)
   reactR::createReactShinyInput(
     inputId,
@@ -129,6 +130,8 @@ scout_container <- function(cl, .list, label, ...) {
 #' @param closeOnClick Whether to close the scoutbar whenever this action is
 #' clicked. Default to TRUE.
 #' @param ... Other options. See \url{https://www.scoutbar.co/docs/actions}.
+#' If you pass an icon, it expects a shiny tag. Moreover, any dependency attached
+#' to this icon is removed, which means you have to add them manually
 #' @return A list containing:
 #' \itemize{
 #'  \item children: a sublist where are passed the options.
@@ -147,6 +150,13 @@ scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
     closeOnClick = closeOnClick,
     ...
   )
+
+  if (!is.null(props[["icon"]])) {
+    if (!inherits(props[["icon"]], "shiny.tag")) {
+      stop("icon must be a shiny tag like shiny::icon(\"cogs\").")
+    }
+    props[["icon"]] <- remove_all_html_dependencies(props[["icon"]])
+  }
 
   list(
     children = props,
@@ -167,9 +177,10 @@ scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
 #' through the current websocket connection, leveraging the shiny session object.
 #' @rdname scoutbar
 update_scoutbar <- function(
-    session = shiny::getDefaultReactiveDomain(),
-    inputId,
-    ...) {
+  session = shiny::getDefaultReactiveDomain(),
+  inputId,
+  ...
+) {
   message <- list()
   configuration <- list(...)
   if (!is.null(configuration)) {
