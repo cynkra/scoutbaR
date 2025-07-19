@@ -26,3 +26,30 @@ remove_all_html_dependencies <- function(tag) {
 
   clean_tag
 }
+
+#' @keywords internal
+recurse <- function(l, func, ...) {
+  l <- func(l, ...)
+  if(is.list(l) && length(l)>0){
+    lapply(
+      l,
+      function(ll){
+        recurse(ll, func, ...)
+      }
+    )
+  } else {
+    l
+  }
+}
+
+#' @keywords internal
+strip_dependencies_from_actions <- function(actions) {
+  recurse(actions, function(x) {
+    if(length(names(x)) > 0 && ("children" %in% names(x))) {
+      if(!is.null(x$children$icon)) {
+        x$children$icon <- remove_all_html_dependencies(x$children$icon)
+      }
+    }
+    return(x)
+  })
+}
