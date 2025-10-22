@@ -35,7 +35,7 @@
 <h2 class="pkg-version" data-toc-text="0.2.5" id="scoutbar-025">scoutbaR 0.2.5<a class="anchor" aria-label="anchor" href="#scoutbar-025"></a></h2>
 <div class="section level3">
 <h3 id="breaking-change-0-2-5">Breaking change<a class="anchor" aria-label="anchor" href="#breaking-change-0-2-5"></a></h3>
-<ul><li>You can now pass icons as shiny tags (<code>icon("cogs")</code>) in <code><a href="../reference/scout_action.html">scout_action()</a></code>:</li>
+<ul><li>You can now pass icons as shiny tags (<code>icon("cogs")</code>) in <code>scout_action</code>:</li>
 </ul><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># old</span></span>
 <span><span class="fu"><a href="../reference/scout_action.html">scout_action</a></span><span class="op">(</span></span>
@@ -52,12 +52,8 @@
 <span>  description <span class="op">=</span> <span class="st">"3"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>This allows to leverage other icon sets that fontawesome.</p>
-<p>Note that any dependency attached to the icon is dropped, which avoid issues with the scoutBar on the JS side. You can capture these dependencies using <a href="https://github.com/rstudio/htmltools" class="external-link">htmltools</a> and adding them manually in the application UI part. For instance, if you use the <a href="https://dreamrs.github.io/phosphoricons/" class="external-link">phosphoricons</a> package (with <code>ph_i()</code>), you can call <code><a href="https://dreamrs.github.io/phosphoricons/reference/html_dependency_phosphor.html" class="external-link">phosphoricons::html_dependency_phosphor()</a></code> in your app UI function. This limitation may be removed in the future, provided that this <a href="https://github.com/react-R/reactR/issues/95" class="external-link">issue</a> is solved.</p>
+<p>Note that any dependency attached to the icon is dropped, which avoid issues with the scoutBar on the JS side. You can capture these dependencies using <a href="https://github.com/rstudio/htmltools" class="external-link">htmltools</a> and adding them manually in the application UI part. For instance, if you use the <a href="https://dreamrs.github.io/phosphoricons/" class="external-link">phosphoricons</a> package (with <code>ph_i</code>), you can call <code><a href="https://dreamrs.github.io/phosphoricons/reference/html_dependency_phosphor.html" class="external-link">phosphoricons::html_dependency_phosphor()</a></code> in your app UI function. This limitation may be removed in the future, provided that this <a href="https://github.com/react-R/reactR/issues/95" class="external-link">issue</a> is solved.</p>
 </div>
-<div class="section level3">
-<h3 id="bug-fix-0-2-5">Bug fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-2-5"></a></h3>
-<ul><li>Fix issue with the upcoming release of <a href="https://testthat.r-lib.org" class="external-link">testthat</a> (mistakenly using <code>expect()</code> instead of <code>expect_length()</code>).</li>
-</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="scoutbar-020">scoutbaR 0.2.0<a class="anchor" aria-label="anchor" href="#scoutbar-020"></a></h2><p class="text-muted">CRAN release: 2025-03-20</p>
