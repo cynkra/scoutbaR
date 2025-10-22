@@ -35,22 +35,31 @@ scoutbar <- function(
   ...
 ) {
   theme <- match.arg(theme)
+
+  deps <- htmltools::findDependencies(
+    list(
+      htmltools::htmlDependency(
+        name = "scoutbar-input",
+        version = utils::packageVersion(utils::packageName()),
+        src = "www/scoutbar",
+        package = "scoutbaR",
+        script = "scoutbar.js"
+      ),
+      actions
+    )
+  )
+
   reactR::createReactShinyInput(
     inputId,
     "scoutbar",
-    htmltools::htmlDependency(
-      name = "scoutbar-input",
-      version = utils::packageVersion(utils::packageName()),
-      src = "www/scoutbar",
-      package = "scoutbaR",
-      script = "scoutbar.js"
-    ),
+    deps,
     default = NULL,
     list(
       id = inputId,
       theme = theme,
       placeholder = placeholder,
-      actions = actions,
+      actions = strip_dependencies_from_actions(actions),
+      deps = deps,
       ...
     ),
     htmltools::tags$span
