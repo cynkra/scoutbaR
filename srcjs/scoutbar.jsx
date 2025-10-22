@@ -38,3 +38,7 @@ const scoutbarInput = ({ configuration, value, setValue }) => {
 };
 
 reactShinyInput('.scoutbar', 'scoutbaR.scoutbar', scoutbarInput);
+
+Shiny.addCustomMessageHandler('process-actions-deps', (m) => {
+  Shiny.renderDependencies(m);
+})

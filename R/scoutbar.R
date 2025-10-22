@@ -8,7 +8,7 @@
 #' to construct better navigation menus.
 #'
 #' @importFrom reactR createReactShinyInput
-#' @importFrom htmltools htmlDependency tags
+#' @importFrom htmltools htmlDependency tags resolveDependencies findDependencies
 #'
 #' @param inputId Widget input id.
 #' You can check the scoutbar configuration with \code{input[["<inputId>-configuration"]]}.
@@ -36,9 +36,9 @@ scoutbar <- function(
 ) {
   theme <- match.arg(theme)
 
-  deps <- htmltools::findDependencies(
+  deps <- findDependencies(
     list(
-      htmltools::htmlDependency(
+      htmlDependency(
         name = "scoutbar-input",
         version = utils::packageVersion(utils::packageName()),
         src = "www/scoutbar",
@@ -49,7 +49,7 @@ scoutbar <- function(
     )
   )
 
-  reactR::createReactShinyInput(
+  createReactShinyInput(
     inputId,
     "scoutbar",
     deps,
@@ -62,7 +62,7 @@ scoutbar <- function(
       deps = deps,
       ...
     ),
-    htmltools::tags$span
+    span
   )
 }
 
@@ -197,6 +197,23 @@ update_scoutbar <- function(
       id = session$ns(inputId)
     )
   }
+
+  # Manage dependencies for actions in case there wasn't
+  # any at initialization
+  if (length(configuration$actions)) {
+    # Extract and resolve duplicates
+    configuration$deps <- resolveDependencies(
+      findDependencies(
+        configuration$actions,
+        tagify = TRUE
+      )
+    )
+    # serve deps
+    configuration$deps <- lapply(configuration$deps, shiny::createWebDependency)
+    configuration$actions <- strip_deps_from_actions(configuration$actions)
+    session$sendCustomMessage("process-actions-deps", configuration$deps)
+  }
+
   # Reset scoutbar status
   # The scoutbar does not seem to be able to reset its state
   # from JS and adding custom React state hooks does not work well.

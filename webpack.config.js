@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: path.join(__dirname, 'srcjs', 'scoutbar.jsx'),
     output: {
         path: path.join(__dirname, 'inst/www/scoutbar'),
@@ -24,6 +24,7 @@ module.exports = {
         ]
     },
     externals: {
+        'shiny': 'window.Shiny',
         'react': 'window.React',
         'react-dom': 'window.ReactDOM',
         'reactR': 'window.reactR'
