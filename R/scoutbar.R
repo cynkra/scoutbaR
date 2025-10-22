@@ -34,22 +34,31 @@ scoutbar <- function(
     actions = list(),
     ...) {
   theme <- match.arg(theme)
+
+  deps <- htmltools::findDependencies(
+    list(
+      htmltools::htmlDependency(
+        name = "scoutbar-input",
+        version = utils::packageVersion(utils::packageName()),
+        src = "www/scoutbar",
+        package = "scoutbaR",
+        script = "scoutbar.js"
+      ),
+      actions
+    )
+  )
+
   reactR::createReactShinyInput(
     inputId,
     "scoutbar",
-    htmltools::htmlDependency(
-      name = "scoutbar-input",
-      version = utils::packageVersion(utils::packageName()),
-      src = "www/scoutbar",
-      package = "scoutbaR",
-      script = "scoutbar.js"
-    ),
+    deps,
     default = NULL,
     list(
       id = inputId,
       theme = theme,
       placeholder = placeholder,
-      actions = actions,
+      actions = strip_dependencies_from_actions(actions),
+      deps = deps,
       ...
     ),
     htmltools::tags$span
@@ -154,7 +163,7 @@ scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
     if (!inherits(props[["icon"]], "shiny.tag")) {
       stop("icon must be a shiny tag like shiny::icon(\"cogs\").")
     }
-    props[["icon"]] <- remove_all_html_dependencies(props[["icon"]])
+    # props[["icon"]] <- remove_all_html_dependencies(props[["icon"]])
   }
 
   list(

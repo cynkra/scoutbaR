@@ -16,7 +16,7 @@ ui <- page_fillable(
             label = "Section 1",
             scout_action(
               id = 1,
-              icon = icon("house"),
+              icon = phosphoricons::ph_i("house"),
               label = "1",
               description = "1"
             ),
