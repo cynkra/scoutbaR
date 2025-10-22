@@ -30,10 +30,10 @@ remove_all_html_dependencies <- function(tag) {
 #' @keywords internal
 recurse <- function(l, func, ...) {
   l <- func(l, ...)
-  if(is.list(l) && length(l)>0){
+  if (is.list(l) && length(l) > 0) {
     lapply(
       l,
-      function(ll){
+      function(ll) {
         recurse(ll, func, ...)
       }
     )
@@ -45,8 +45,8 @@ recurse <- function(l, func, ...) {
 #' @keywords internal
 strip_dependencies_from_actions <- function(actions) {
   recurse(actions, function(x) {
-    if(length(names(x)) > 0 && ("children" %in% names(x))) {
-      if(!is.null(x$children$icon)) {
+    if (length(names(x)) > 0 && ("children" %in% names(x))) {
+      if (!is.null(x$children$icon)) {
         x$children$icon <- remove_all_html_dependencies(x$children$icon)
       }
     }
