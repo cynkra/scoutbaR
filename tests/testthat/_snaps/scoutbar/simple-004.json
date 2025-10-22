@@ -1,0 +1,127 @@
+{
+  "input": {
+    "open": 1,
+    "scoutbar": "1",
+    "scoutbar-configuration": {
+      "id": "scoutbar",
+      "theme": "dark",
+      "placeholder": [
+        "Hello",
+        "Type some text"
+      ],
+      "actions": [
+        {
+          "children": {
+            "ariaLabel": 6,
+            "label": "New 1",
+            "description": "New description 1",
+            "closeOnClick": true,
+            "icon": {
+              "type": "i",
+              "key": null,
+              "ref": null,
+              "props": {
+                "class": "fas fa-house",
+                "role": "presentation",
+                "aria-label": "house icon"
+              },
+              "_owner": null
+            }
+          },
+          "class": "scout_action"
+        },
+        {
+          "children": {
+            "ariaLabel": 7,
+            "label": "New 2",
+            "description": "New description 2",
+            "closeOnClick": true,
+            "icon": {
+              "type": "i",
+              "key": null,
+              "ref": null,
+              "props": {
+                "class": "fas fa-house",
+                "role": "presentation",
+                "aria-label": "house icon"
+              },
+              "_owner": null
+            }
+          },
+          "class": "scout_action"
+        },
+        {
+          "children": {
+            "ariaLabel": 8,
+            "label": "New 3",
+            "description": "New description 3",
+            "closeOnClick": true,
+            "icon": {
+              "type": "i",
+              "key": null,
+              "ref": null,
+              "props": {
+                "class": "fas fa-house",
+                "role": "presentation",
+                "aria-label": "house icon"
+              },
+              "_owner": null
+            }
+          },
+          "class": "scout_action"
+        },
+        {
+          "children": {
+            "ariaLabel": 9,
+            "label": "New 4",
+            "description": "New description 4",
+            "closeOnClick": true,
+            "icon": {
+              "type": "i",
+              "key": null,
+              "ref": null,
+              "props": {
+                "class": "fas fa-house",
+                "role": "presentation",
+                "aria-label": "house icon"
+              },
+              "_owner": null
+            }
+          },
+          "class": "scout_action"
+        },
+        {
+          "children": {
+            "ariaLabel": 10,
+            "label": "New 5",
+            "description": "New description 5",
+            "closeOnClick": true,
+            "icon": {
+              "type": "i",
+              "key": null,
+              "ref": null,
+              "props": {
+                "class": "fas fa-house",
+                "role": "presentation",
+                "aria-label": "house icon"
+              },
+              "_owner": null
+            }
+          },
+          "class": "scout_action"
+        }
+      ],
+      "showRecentSearch": true,
+      "revealScoutbar": true
+    },
+    "scoutbar-open": false,
+    "theme": "dark",
+    "update": 1
+  },
+  "output": {
+    "textOutput": "You entered: 1"
+  },
+  "export": {
+
+  }
+}

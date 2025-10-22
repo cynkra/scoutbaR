@@ -16,7 +16,9 @@ scout_action(id, label, description, closeOnClick = TRUE, ...)
 \item{closeOnClick}{Whether to close the scoutbar whenever this action is
 clicked. Default to TRUE.}
 
-\item{...}{Other options. See \url{https://www.scoutbar.co/docs/actions}.}
+\item{...}{Other options. See \url{https://www.scoutbar.co/docs/actions}.
+If you pass an icon, it expects a shiny tag. Moreover, any dependency attached
+to this icon is removed, which means you have to add them manually}
 }
 \value{
 A list containing:

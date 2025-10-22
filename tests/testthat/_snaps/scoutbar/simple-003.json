@@ -1,5 +1,6 @@
 {
   "input": {
+    "open": 1,
     "scoutbar": "1",
     "scoutbar-configuration": {
       "id": "scoutbar",
@@ -22,9 +23,8 @@
                   "key": null,
                   "ref": null,
                   "props": {
-                    "class": "fas fa-house",
-                    "role": "presentation",
-                    "aria-label": "house icon"
+                    "class": "ph-light ph-house ph-lg",
+                    "children": null
                   },
                   "_owner": null
                 }
@@ -133,7 +133,7 @@
     },
     "scoutbar-open": false,
     "theme": "dark",
-    "update": 1
+    "update": 0
   },
   "output": {
     "textOutput": "You entered: 1"

@@ -15,10 +15,9 @@ Imports:
     htmltools,
     reactR,
     shiny
-Remotes:
-    rstudio/chromote
 Suggests: 
     testthat (>= 3.0.0),
     shinytest2,
-    chromote
+    chromote,
+    phosphoricons
 Config/testthat/edition: 3

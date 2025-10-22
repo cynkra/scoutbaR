@@ -6,8 +6,10 @@ ui <- page_fillable(
   title = "Penguins dashboard",
   layout_sidebar(
     sidebar = sidebar(
+      phosphoricons::html_dependency_phosphor(),
       input_dark_mode(id = "theme", mode = "dark"),
-      actionButton("update", "Update", icon = icon("house")),
+      actionButton("open", "Open", icon = icon("house")),
+      actionButton("update", "Update actions", icon = icon("rocket")),
       scoutbar(
         "scoutbar",
         showRecentSearch = TRUE,
@@ -16,7 +18,7 @@ ui <- page_fillable(
             label = "Section 1",
             scout_action(
               id = 1,
-              icon = icon("house"),
+              icon = phosphoricons::ph_i("house"),
               label = "1",
               description = "1"
             ),
@@ -68,13 +70,38 @@ server <- function(input, output, session) {
     }
   )
 
-  observeEvent(input$update, {
+  observeEvent(input$open, {
     update_scoutbar(session, "scoutbar", revealScoutbar = TRUE)
   })
 
   observeEvent(input$theme, {
     update_scoutbar(session, "scoutbar", theme = input$theme)
   })
+
+  # TBD: at some point it would be nice to be able
+  # to only update a subset of the actions
+  observeEvent(input$update, {
+    actions_lst <- lapply(1:5, function(i) {
+      scout_action(
+        id = i + 5,
+        icon = icon("house"),
+        label = paste("New", i),
+        description = paste("New description", i)
+      )
+    })
+
+    new_actions <- list(
+      input[["scoutbar-configuration"]]$actions[[1]],
+      actions_lst
+    )
+
+    update_scoutbar(
+      session,
+      "scoutbar",
+      actions = actions_lst
+    )
+  })
+
   output$textOutput <- renderText({
     sprintf("You entered: %s", input$scoutbar)
   })

@@ -28,11 +28,12 @@
 #' @export
 #' @rdname scoutbar
 scoutbar <- function(
-    inputId,
-    theme = c("light", "dark", "auto"),
-    placeholder = list("Hello", "Type some text"),
-    actions = list(),
-    ...) {
+  inputId,
+  theme = c("light", "dark", "auto"),
+  placeholder = list("Hello", "Type some text"),
+  actions = list(),
+  ...
+) {
   theme <- match.arg(theme)
   reactR::createReactShinyInput(
     inputId,
@@ -154,7 +155,6 @@ scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
     if (!inherits(props[["icon"]], "shiny.tag")) {
       stop("icon must be a shiny tag like shiny::icon(\"cogs\").")
     }
-    props[["icon"]] <- remove_all_html_dependencies(props[["icon"]])
   }
 
   list(
@@ -176,9 +176,10 @@ scout_action <- function(id, label, description, closeOnClick = TRUE, ...) {
 #' through the current websocket connection, leveraging the shiny session object.
 #' @rdname scoutbar
 update_scoutbar <- function(
-    session = shiny::getDefaultReactiveDomain(),
-    inputId,
-    ...) {
+  session = shiny::getDefaultReactiveDomain(),
+  inputId,
+  ...
+) {
   message <- list()
   configuration <- list(...)
   if (!is.null(configuration)) {

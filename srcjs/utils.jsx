@@ -1,24 +1,5 @@
 import { createScoutAction, createScoutPage, createScoutSection } from 'scoutbar';
 
-const convertTagToElement = (tag) => {
-  if (tag) {
-    if (React.isValidElement(tag)) return tag;
-    // looks like class attribute fine without changing to className
-    // also if we expect style prop then we would need to convert to object
-    // or ask users to specify style as list in R unless also handled somewhere
-    if (tag.children !== undefined) {
-      tag.children = convertTagToElement(tag.children)
-    }
-    return React.createElement(
-      tag.name,
-      tag.attribs,
-      tag.children
-    );
-  } else {
-    return null;
-  }
-}
-
 const processAction = (el, setValue) => {
   let cl = el.class;
   let label = el.label;
@@ -36,11 +17,11 @@ const processAction = (el, setValue) => {
   }
 
   // When we don't have an action, we don't go further
-  if (el.class !== "scout_action") {
+  if (cl !== "scout_action") {
     return (
       func({
-        label: el.label,
-        children: el.children.map((child) => {
+        label: label,
+        children: children.map((child) => {
           return (processAction(child, setValue))
         })
       })
@@ -48,8 +29,6 @@ const processAction = (el, setValue) => {
   }
   // Convert icons to React elements
   if (children.icon !== undefined) {
-    //Shiny.renderDependencies(children.icon.dependencies);
-    //children.icon = $($("<div/>").html(children.icon.html).text());
     if (!React.isValidElement(children.icon)) {
       children.icon = reactR.hydrate({}, children.icon);
     }

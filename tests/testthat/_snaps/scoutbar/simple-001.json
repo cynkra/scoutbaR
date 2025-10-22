@@ -1,5 +1,6 @@
 {
   "input": {
+    "open": 0,
     "scoutbar": null,
     "scoutbar-configuration": {
       "id": "scoutbar",
@@ -22,9 +23,8 @@
                   "key": null,
                   "ref": null,
                   "props": {
-                    "class": "fas fa-house",
-                    "role": "presentation",
-                    "aria-label": "house icon"
+                    "class": "ph-light ph-house ph-lg",
+                    "children": null
                   },
                   "_owner": null
                 }

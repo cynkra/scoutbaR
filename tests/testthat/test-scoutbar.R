@@ -1,7 +1,7 @@
 test_that("scout action works", {
   action <- scout_action("id", "label", "descr")
   expect_type(action, "list")
-  expect(length(action), 2)
+  expect_length(action, 2)
   expect_true(all(names(action) %in% c("children", "class")))
   expect_identical(action$class, "scout_action")
 
@@ -32,7 +32,7 @@ test_that("scout section works", {
   )
 
   expect_type(section, "list")
-  expect(length(section), 3)
+  expect_length(section, 3)
   expect_true(all(names(section) %in% c("children", "label", "class")))
   expect_identical(section$class, "scout_section")
 
@@ -50,7 +50,7 @@ test_that("scout page works", {
   )
 
   expect_type(page, "list")
-  expect(length(page), 3)
+  expect_length(page, 3)
   expect_true(all(names(page) %in% c("children", "label", "class")))
   expect_identical(page$class, "scout_page")
 
@@ -93,12 +93,6 @@ library(shinytest2)
 
 test_that("App initialization is consistent", {
   skip_on_cran()
-
-  chromote::local_chrome_version(
-    "latest-stable",
-    binary = "chrome-headless-shell"
-  )
-
   app <- AppDriver$new(
     system.file("examples/simple", package = "scoutbaR"),
     name = "simple"
@@ -106,12 +100,21 @@ test_that("App initialization is consistent", {
 
   app$expect_values()
 
-  app$click("update")
+  app$click("open")
   app$wait_for_idle()
   app$expect_values()
 
   app$click(selector = ".scoutbar-cell-item[aria-label=\"1\"]")
   app$wait_for_idle()
   app$expect_values()
+
+  app$click("update")
+  app$wait_for_idle()
+  app$expect_values()
+
+  app$click("open")
+  app$wait_for_idle()
+  app$expect_values()
+
   app$stop()
 })

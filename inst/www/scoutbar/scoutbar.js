@@ -2573,20 +2573,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var scoutbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! scoutbar */ "./node_modules/scoutbar/dist/bundle-es/index.js");
 
-var _convertTagToElement = function convertTagToElement(tag) {
-  if (tag) {
-    if (React.isValidElement(tag)) return tag;
-    // looks like class attribute fine without changing to className
-    // also if we expect style prop then we would need to convert to object
-    // or ask users to specify style as list in R unless also handled somewhere
-    if (tag.children !== undefined) {
-      tag.children = _convertTagToElement(tag.children);
-    }
-    return React.createElement(tag.name, tag.attribs, tag.children);
-  } else {
-    return null;
-  }
-};
 var _processAction = function processAction(el, setValue) {
   var cl = el["class"];
   var label = el.label;
@@ -2603,18 +2589,16 @@ var _processAction = function processAction(el, setValue) {
   }
 
   // When we don't have an action, we don't go further
-  if (el["class"] !== "scout_action") {
+  if (cl !== "scout_action") {
     return func({
-      label: el.label,
-      children: el.children.map(function (child) {
+      label: label,
+      children: children.map(function (child) {
         return _processAction(child, setValue);
       })
     });
   }
   // Convert icons to React elements
   if (children.icon !== undefined) {
-    //Shiny.renderDependencies(children.icon.dependencies);
-    //children.icon = $($("<div/>").html(children.icon.html).text());
     if (!React.isValidElement(children.icon)) {
       children.icon = reactR.hydrate({}, children.icon);
     }
