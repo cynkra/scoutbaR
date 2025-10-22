@@ -1,5 +1,5 @@
 #' @keywords internal
-remove_all_html_dependencies <- function(tag) {
+remove_all_deps <- function(tag) {
   # Check if it's a valid tag
   if (!inherits(tag, "shiny.tag") && !is.list(tag)) {
     return(tag)
@@ -17,7 +17,7 @@ remove_all_html_dependencies <- function(tag) {
         return(NULL)
       }
       # Otherwise, recursively clean the child
-      return(remove_all_html_dependencies(child))
+      remove_all_deps(child)
     })
 
     # Remove NULL entries (the dependencies we filtered out)
@@ -43,13 +43,13 @@ recurse <- function(l, func, ...) {
 }
 
 #' @keywords internal
-strip_dependencies_from_actions <- function(actions) {
+strip_deps_from_actions <- function(actions) {
   recurse(actions, function(x) {
     if (length(names(x)) > 0 && ("children" %in% names(x))) {
       if (!is.null(x$children$icon)) {
-        x$children$icon <- remove_all_html_dependencies(x$children$icon)
+        x$children$icon <- remove_all_deps(x$children$icon)
       }
     }
-    return(x)
+    x
   })
 }

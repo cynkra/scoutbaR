@@ -58,7 +58,7 @@ scoutbar <- function(
       id = inputId,
       theme = theme,
       placeholder = placeholder,
-      actions = strip_dependencies_from_actions(actions),
+      actions = strip_deps_from_actions(actions),
       deps = deps,
       ...
     ),
