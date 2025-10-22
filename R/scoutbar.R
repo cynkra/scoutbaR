@@ -62,7 +62,7 @@ scoutbar <- function(
       deps = deps,
       ...
     ),
-    span
+    tags$span
   )
 }
 
