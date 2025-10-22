@@ -6,7 +6,6 @@ ui <- page_fillable(
   title = "Penguins dashboard",
   layout_sidebar(
     sidebar = sidebar(
-      phosphoricons::html_dependency_phosphor(),
       input_dark_mode(id = "theme", mode = "dark"),
       actionButton("open", "Open", icon = icon("house")),
       actionButton("update", "Update actions", icon = icon("rocket")),
@@ -84,7 +83,7 @@ server <- function(input, output, session) {
     actions_lst <- lapply(1:5, function(i) {
       scout_action(
         id = i + 5,
-        icon = icon("house"),
+        icon = phosphoricons::ph_i("cake", size = "xl"),
         label = paste("New", i),
         description = paste("New description", i)
       )

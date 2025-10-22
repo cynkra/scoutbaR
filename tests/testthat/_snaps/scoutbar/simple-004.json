@@ -21,9 +21,8 @@
               "key": null,
               "ref": null,
               "props": {
-                "class": "fas fa-house",
-                "role": "presentation",
-                "aria-label": "house icon"
+                "class": "ph-light ph-cake ph-xl",
+                "children": null
               },
               "_owner": null
             }
@@ -41,9 +40,8 @@
               "key": null,
               "ref": null,
               "props": {
-                "class": "fas fa-house",
-                "role": "presentation",
-                "aria-label": "house icon"
+                "class": "ph-light ph-cake ph-xl",
+                "children": null
               },
               "_owner": null
             }
@@ -61,9 +59,8 @@
               "key": null,
               "ref": null,
               "props": {
-                "class": "fas fa-house",
-                "role": "presentation",
-                "aria-label": "house icon"
+                "class": "ph-light ph-cake ph-xl",
+                "children": null
               },
               "_owner": null
             }
@@ -81,9 +78,8 @@
               "key": null,
               "ref": null,
               "props": {
-                "class": "fas fa-house",
-                "role": "presentation",
-                "aria-label": "house icon"
+                "class": "ph-light ph-cake ph-xl",
+                "children": null
               },
               "_owner": null
             }
@@ -101,14 +97,111 @@
               "key": null,
               "ref": null,
               "props": {
-                "class": "fas fa-house",
-                "role": "presentation",
-                "aria-label": "house icon"
+                "class": "ph-light ph-cake ph-xl",
+                "children": null
               },
               "_owner": null
             }
           },
           "class": "scout_action"
+        }
+      ],
+      "deps": [
+        {
+          "name": "scoutbar-input",
+          "version": "0.2.5",
+          "src": {
+            "file": "www/scoutbar"
+          },
+          "meta": null,
+          "script": "scoutbar.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": "scoutbaR",
+          "all_files": true
+        },
+        {
+          "name": "phosphor-icons",
+          "version": "1.4.1",
+          "src": {
+            "file": "assets"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "css/icons.min.css",
+          "head": null,
+          "attachment": null,
+          "package": "phosphoricons",
+          "all_files": true
+        },
+        {
+          "name": "font-awesome",
+          "version": "6.5.2",
+          "src": {
+            "file": "fontawesome"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": [
+            "css/all.min.css",
+            "css/v4-shims.min.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "package": "fontawesome",
+          "all_files": true
+        },
+        {
+          "name": "font-awesome",
+          "version": "6.5.2",
+          "src": {
+            "file": "fontawesome"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": [
+            "css/all.min.css",
+            "css/v4-shims.min.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "package": "fontawesome",
+          "all_files": true
+        },
+        {
+          "name": "font-awesome",
+          "version": "6.5.2",
+          "src": {
+            "file": "fontawesome"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": [
+            "css/all.min.css",
+            "css/v4-shims.min.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "package": "fontawesome",
+          "all_files": true
+        },
+        {
+          "name": "font-awesome",
+          "version": "6.5.2",
+          "src": {
+            "file": "fontawesome"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": [
+            "css/all.min.css",
+            "css/v4-shims.min.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "package": "fontawesome",
+          "all_files": true
         }
       ],
       "showRecentSearch": true,
