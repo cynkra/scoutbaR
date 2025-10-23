@@ -23,12 +23,6 @@ scout_action(
 
 This allows to leverage other icon sets that fontawesome.
 
-Note that any dependency attached to the icon is dropped, which avoid issues with the scoutBar on the JS side. You can capture
-these dependencies using `{htmltools}` and adding them manually in the application UI part. For instance,
-if you use the `{phosphoricons}` package (with `ph_i()`), you can call `phosphoricons::html_dependency_phosphor()`
-in your app UI function. This limitation may be removed in the future, provided that
-this [issue](https://github.com/react-R/reactR/issues/95) is solved.
-
 ## Bug fix
 
 - Fix issue with the upcoming release of `{testthat}` (mistakenly using `expect()` instead of `expect_length()`).
